@@ -25,7 +25,7 @@ function setup() {
 function draw() {
   //move the user
 	move();
-
+}
 	function makeGround(){
 		//create a plane
 		var g = new Plane({
@@ -38,8 +38,32 @@ function draw() {
 		  metalness:0.2
 	  });
 	}
+
   world.add(g);
 
+  let sky = select('#theSky');
+  sky.attribute('src', sky);
+  
+  function move(){
+	if (mouseIsPressed || touchIsDown) {
+		world.moveUserForward(0.03);
+	}
+
+	var pos = world.getUserPosition();
+	
+	if (pos.x > 25) {
+		world.setUserPosition(-25, pos.y, pos.z);
+	}
+	else if (pos.x < -25) {
+		world.setUserPosition(25, pos.y, pos.z);
+	}
+	if (pos.z > 25) {
+		world.setUserPosition(pos.x, pos.y, -50);
+	}
+	else if (pos.z < -25) {
+		world.setUserPosition(pos.x, pos.y, 50);
+	}
+}
 	//move the snowman
 	// var sz = snowman.getZ();
 	
@@ -51,9 +75,7 @@ function draw() {
 	
 	
 	//create the sky
-	let sky = select('#theSky');
-	sky.attribute('src', sky);
-	
+
 	
 	//create a new flake
 	//var temp = new Flake(0, 0, -5, world);
@@ -77,7 +99,7 @@ function draw() {
 	box(300, 300, 300); 
 	fill('yellow'); 
 	position(0, 0, 'fixed');
-}*/
+}
 
 
 function makeTrees(){
@@ -127,29 +149,9 @@ function makeTrees(){
 					  radiusBottom: 0.5, radiusTop: 0,
 					  red:0, green:71, blue:9,
 				  });
-	  tree.addChild(tree_l3); */
+	  tree.addChild(tree_l3); 
 	  } 
 	}
 }
 }
 
-function move(){
-	if (mouseIsPressed || touchIsDown) {
-		world.moveUserForward(0.03);
-	}
-
-	var pos = world.getUserPosition();
-	
-	if (pos.x > 25) {
-		world.setUserPosition(-25, pos.y, pos.z);
-	}
-	else if (pos.x < -25) {
-		world.setUserPosition(25, pos.y, pos.z);
-	}
-	if (pos.z > 25) {
-		world.setUserPosition(pos.x, pos.y, -50);
-	}
-	else if (pos.z < -25) {
-		world.setUserPosition(pos.x, pos.y, 50);
-	}
-}

@@ -1,6 +1,7 @@
 let world, myModel, bling;
 let sky = '#sky';
-let flakes = []; 
+let dancer ="dancing";
+//let flakes = []; 
 let szChange = 0.01;
 // var mymodel;
 // var allImages = ['#sky'];
@@ -25,6 +26,19 @@ function draw() {
   //move the user
 	move();
 
+	function makeGround(){
+		//create a plane
+		var g = new Plane({
+		  x:0, y:0, z:0, 
+		  width:50, height:50, 
+		  asset: 'snow',
+		  repeatX: 100,
+		  repeatY: 100,
+		  rotationX:-90, 
+		  metalness:0.2
+	  });
+	}
+  world.add(g);
 
 	//move the snowman
 	// var sz = snowman.getZ();
@@ -42,11 +56,11 @@ function draw() {
 	
 	
 	//create a new flake
-	var temp = new Flake(0, 0, -5, world);
-	flakes.push(temp);
+	//var temp = new Flake(0, 0, -5, world);
+	//flakes.push(temp);
 	
 	//draw all flakes
-	for (var i = 0; i < flakes.length; i++) {
+	/*for (var i = 0; i < flakes.length; i++) {
 		let result = flakes[i].move();
 		if (result == "gone") {
 			flakes.splice(i, 1);
@@ -54,22 +68,9 @@ function draw() {
 		}
 	}
 }
+*/
 
-function makeGround(){
-	  //create a plane
-	  var g = new Plane({
-		x:0, y:0, z:0, 
-		width:50, height:50, 
-		asset: 'snow',
-		repeatX: 100,
-		repeatY: 100,
-		rotationX:-90, 
-		metalness:0.2
-	});
 
-world.add(g);
-
-}
 
 
 /*function makeStage(){

@@ -2,7 +2,6 @@ let world, myModel, bling;
 let sky = '#sky';
 let flakes = []; 
 let szChange = 0.01;
-let outdoorTent = '#'
 // var mymodel;
 // var allImages = ['#sky'];
 // var flakes = [];
